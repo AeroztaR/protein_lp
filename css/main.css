@@ -1,15 +1,22 @@
+:root {
+    --overlay-color: rgba(193, 40, 51, .9);
+    --menu-speed: .75s;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-
-
 body {
     font-family: 'Oswald', sans-serif;
     font-size: 1.3rem;
     background-color: #fff;
+}
+
+.wrapper {
+    z-index: -1;
 }
 
 a {
@@ -34,9 +41,9 @@ img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 2rem;
+    padding: 3rem 2rem;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .main-header h1 {
@@ -90,6 +97,151 @@ img {
 .btn:active {
     background-color: #8F191B;
 }
+
+/* menu */
+.menu-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.menu-wrap .switch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+}
+
+.menu-wrap .burger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-wrap .burger > div {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+.menu-wrap .burger > div::before,
+.menu-wrap .burger > div::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    width: 100%;
+    height: 2px;
+    background-color: inherit;
+}
+
+.menu-wrap .burger > div::after {
+    top: 10px;
+}
+
+.menu-wrap .switch:checked + .burger > div {
+    transform: rotate(135deg);
+}
+
+.menu-wrap .switch:checked + .burger > div:before,
+.menu-wrap .switch:checked + .burger > div::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.menu-wrap .switch:checked:hover + .burger > div,
+.menu-wrap .switch:checked:active + .burger > div {
+    transform: rotate(225deg);
+}
+
+.menu-wrap .switch:checked ~ .menu {
+    visibility: visible;
+}
+
+.menu-wrap .switch:checked ~ .menu > div {
+    transform: scale(1);
+    transition-duration: var(--menu-speed);
+}
+
+.menu-wrap .switch:checked ~ .menu > div > div {
+    opacity: 1;
+    transition: opacity .4s ease;
+}
+
+.menu-wrap .switch:checked ~ .burger > div {
+    background-color: #fff;
+}
+
+.menu-wrap .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-wrap .menu > div {
+    background-color: var(--overlay-color);
+    border-radius: 50%;
+    width: 200vw;
+    height: 300vw;
+    display: flex;
+    flex: none;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition: all .4s ease;
+}
+
+.menu-wrap .menu > div > div {
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity .4s ease;
+}
+
+.menu-wrap .menu ul li {
+    list-style: none;
+    color: #fff;
+    font-size: 2.2rem;
+    padding: 1rem;
+}
+
+.menu-wrap .menu ul li a {
+    color: inherit;
+    text-decoration: none;
+    transition: all .4s ease;
+}
+
+.menu-wrap .menu ul li a:hover,
+.menu-wrap .menu ul li a:active {
+    color: #E5EAED;
+}
+
+
 
 @media (max-width: 700px) {
     .card {
