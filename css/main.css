@@ -241,7 +241,19 @@ img {
     color: #E5EAED;
 }
 
+::-webkit-scrollbar {
+    width: 20px;
+    background-color: #000;
+}
 
+::-webkit-scrollbar-track {
+    border: 5px solid rgba(229, 234, 237, .25);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #C12833, #8F191B);
+    border-radius: 15px;
+}
 
 @media (max-width: 700px) {
     .card {
