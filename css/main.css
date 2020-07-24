@@ -94,6 +94,80 @@ img {
     order: 2;
 }
 
+/* card rating */
+
+.card__rating {
+    margin-top: .5rem;
+    border: none;
+}
+
+.card__star {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    height: 1rem;
+    background-size: 1rem auto;
+    background-repeat: repeat-x;
+    font-size: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.card__star:focus {
+    outline: none;
+}
+
+.card__star:checked,
+.card__star:hover {
+    background-image: url("/img/star-gold-icon.svg");
+}
+
+.card__star:hover ~ .card__star {
+    background-image: url("/img/star-black-icon.svg");
+}
+
+.card__star:nth-of-type(1) {
+    z-index: 5;
+    width: 1rem;
+}
+
+.card__star:nth-of-type(2) {
+    z-index: 4;
+    width: 2rem;
+}
+
+.card__star:nth-of-type(3) {
+    z-index: 3;
+    width: 3rem;
+}
+
+.card__star:nth-of-type(4) {
+    z-index: 2;
+    width: 4rem;
+}
+
+.card__star:nth-of-type(5) {
+    z-index: 1;
+    width: 5rem;
+}
+
+.card__group {
+    position: relative;
+    width: 5rem;
+    height: 1rem;
+    margin-top: .5rem;
+    background-image: url("/img/star-black-icon.svg");
+    background-size: 1rem auto;
+    background-repeat: repeat-x;
+}
+
+.card__group:focus-within {
+    outline: solid .2rem #C12833;
+    outline-offset: .2rem;
+}
+
 .btn {
     display: inline-block;
     background-color: #C12833;
