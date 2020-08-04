@@ -15,4 +15,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+    // Images on hover change
+    const pictureChange = (imgSelector) => {
+        const images = document.querySelectorAll(imgSelector);
+
+        function showImage(images) {
+            images.src = images.src.slice(0, -4) + '-nt.png';
+        }
+
+        function hideImage(images) {
+            images.src = images.src.slice(0, -7) + '.jpg';
+        }
+
+        images.forEach(img => {
+            img.addEventListener('mouseover', () => {
+                showImage(img);
+            });
+
+            img.addEventListener('mouseout', () => {
+                hideImage(img);
+            });
+        })
+
+    };
+
+    pictureChange('.card__image');
+
 });
